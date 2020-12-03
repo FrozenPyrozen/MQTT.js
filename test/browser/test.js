@@ -1,8 +1,8 @@
 'use strict'
 
 var mqtt = require('../../lib/connect')
-var _URL = require('url')
 var xtend = require('xtend')
+var _URL = require('url')
 var parsed = _URL.parse(document.URL)
 var isHttps = parsed.protocol === 'https:'
 var port = parsed.port || (isHttps ? 443 : 80)

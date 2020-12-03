@@ -1,8 +1,8 @@
 'use strict'
 
 var mqtt = require('mqtt')
-var HttpsProxyAgent = require('https-proxy-agent')
 var url = require('url')
+var HttpsProxyAgent = require('https-proxy-agent')
 /*
 host: host of the endpoint you want to connect e.g. my.mqqt.host.com
 path: path to you endpoint e.g. '/foo/bar/mqtt'
