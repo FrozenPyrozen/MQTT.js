@@ -1,8 +1,8 @@
 'use strict'
 
 var handleClient
-var websocket = require('websocket-stream')
-var WebSocketServer = require('ws').Server
+var WS = require('ws')
+var WebSocketServer = WS.Server
 var Connection = require('mqtt-connection')
 var http = require('http')
 
@@ -109,7 +109,7 @@ function start (startPort, done) {
       return ws.close()
     }
 
-    stream = websocket(ws)
+    stream = WS.createWebSocketStream(ws)
     connection = new Connection(stream)
     handleClient.call(server, connection)
   })
@@ -122,11 +122,11 @@ function start (startPort, done) {
 }
 
 if (require.main === module) {
-  start(process.env.PORT || process.env.ZUUL_PORT, function (err) {
+  start(process.env.PORT || process.env.AIRTAP_PORT, function (err) {
     if (err) {
       console.error(err)
       return
     }
-    console.log('tunnelled server started on port', process.env.PORT || process.env.ZUUL_PORT)
+    console.log('tunnelled server started on port', process.env.PORT || process.env.AIRTAP_PORT)
   })
 }
